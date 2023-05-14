@@ -4,6 +4,7 @@ class Television:
             raise TypeError('brand must be string')
         if not isinstance(model, str):
             raise TypeError('model must be string')
+        
         self._brand = brand
         self._model = model
         self._powerOn = False
@@ -47,6 +48,7 @@ class Television:
 
     def setChannel(self, number):
         if self._powerOn == True:
+            self._prevChan = self._channel
             if number < 0:
                 self._channel = 0
             if number > 99:
@@ -63,4 +65,19 @@ class Television:
 
 if __name__ == '__main__':
     telly = Television('FukuShiba','Super SBOLED')
-    print(telly)
+    print('--- init ---',telly)
+    telly.channelUp()
+    telly.volumeDown()
+    print("--- chanUp, volDown (but it's turned off) ---",telly)
+    telly.togglePower()
+    telly.channelUp()
+    telly.volumeUp()
+    print('--- togglePower, chanUp, volUp ---',telly)
+    telly.toggleMute()
+    telly.setChannel(59)
+    telly.volumeDown()
+    telly.volumeDown()
+    print('--- toggleMute, setChan(59), volDown, volDown ---',telly)
+    telly.jumpPrevChan()
+    telly.channelDown()
+    print('--- prevChan, chanDown ---',telly)
