@@ -13,9 +13,9 @@ class QuadEquation:
 
     def getSolutions(self):
         if self.hasSolutions()==False:
-            return 'Nan'
+            return float('NaN')
         else:
-            return (-self._b+(self._b**2-4*self._a*self._c)**(1/2)/(2*self._a),-self._b-(self._b**2-4*self._a*self._c)**(1/2)/(2*self._a))
+            return ((-self._b+(self._b**2-4*self._a*self._c)**(1/2))/(2*self._a),((-self._b-(self._b**2-4*self._a*self._c)**(1/2))/(2*self._a)))
 
     def hasSolutions(self):
         if self._b**2-4*self._a*self._c >=0:
@@ -28,6 +28,27 @@ class QuadEquation:
 
 if __name__ == '__main__':
 
-    c = QuadEquation(1, -2, 1)
-    print(c.hasSolutions())
-    print(c.getSolutions())
+
+    l = []
+    while True:
+        try:
+            coeff = float(input())
+            l.append(coeff)
+        except KeyboardInterrupt:
+            print('calculating...')
+            try:
+                if len(l) != 3:
+                    raise ValueError()
+            except ValueError:
+                print('hai sgravato')
+                break
+
+            eq = QuadEquation(l[0], l[1], l[2])
+            print(eq.hasSolutions())
+            print(eq.getSolutions())
+            break
+        except ValueError:
+            print('aldooooo')
+            break
+
+   
