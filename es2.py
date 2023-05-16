@@ -1,4 +1,7 @@
 class Television:
+
+    maxChannel = 999;
+    maxVolume = 100;
     def __init__(self,brand,model):
         if not isinstance(brand, str):
             raise TypeError('brand must be string')
@@ -10,8 +13,8 @@ class Television:
         self._powerOn = False
         self._volume = 50
         self._muted = False
-        self._channel = 0
-        self._prevChan = 0
+        self._channel = 1
+        self._prevChan = 1
 
     def togglePower(self):
         if self._powerOn == True:
@@ -21,7 +24,7 @@ class Television:
 
     def volumeUp(self):             #assume we dont want go higher than 99
         if self._powerOn == True:
-            if self._volume < 99:
+            if self._volume < self.maxVolume:
                 self._volume += 1
 
     def volumeDown(self):           # and not lower than 0
@@ -39,20 +42,20 @@ class Television:
     def channelUp(self):            #assume we have 100 channels and we want to circle when over
         if self._powerOn == True:
             self._prevChan = self._channel
-            self._channel = (self._channel+1)%100
+            self._channel = (self._channel+1)%self.maxChannel
             
     def channelDown(self):
         if self._powerOn == True:
             self._prevChan = self._channel
-            self._channel = (self._channel-1)%100
+            self._channel = (self._channel-1)%(self.maxChannel+1)-1
 
     def setChannel(self, number):
         if self._powerOn == True:
             self._prevChan = self._channel
-            if number < 0:
-                self._channel = 0
-            if number > 99:
-                self._channel = 99
+            if number < 1
+            self._channel = 1
+            if number > self.maxChannel:
+                self._channel = self.maxChannel
             else:
                 self._channel = number 
 
