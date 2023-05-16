@@ -22,12 +22,12 @@ class Television:
         else:
             self._powerOn = True
 
-    def volumeUp(self):             #assume we dont want go higher than 99
+    def volumeUp(self):             
         if self._powerOn == True:
             if self._volume < self.maxVolume:
                 self._volume += 1
 
-    def volumeDown(self):           # and not lower than 0
+    def volumeDown(self):           
         if self._powerOn == True:
             if self._volume > 0:
                 self._volume -= 1
@@ -39,7 +39,7 @@ class Television:
             else:
                 self._muted = False
    
-    def channelUp(self):            #assume we have 100 channels and we want to circle when over
+    def channelUp(self):            
         if self._powerOn == True:
             self._prevChan = self._channel
             self._channel = (self._channel+1)%self.maxChannel
@@ -47,14 +47,14 @@ class Television:
     def channelDown(self):
         if self._powerOn == True:
             self._prevChan = self._channel
-            self._channel = (self._channel-1)%(self.maxChannel+1)-1
+            self._channel = ((self._channel-2)%(self.maxChannel))+1
 
     def setChannel(self, number):
         if self._powerOn == True:
             self._prevChan = self._channel
-            if number < 1
-            self._channel = 1
-            if number > self.maxChannel:
+            if number < 1:
+                self._channel = 1
+            elif number > self.maxChannel:
                 self._channel = self.maxChannel
             else:
                 self._channel = number 
