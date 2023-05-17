@@ -26,5 +26,19 @@ class Numbers:
             raise ValueError
         if not isinstance(b, (int,float)):
             raise ValueError
-        return b - c
+        return b - a
         
+if __name__ == '__main__':
+    a = Numbers(10, 20)
+    print(a.add())
+    print(a.getValues())
+
+    print(a.multiply(5))
+    print(Numbers.multiply(5))
+
+    print(a.subtract(5,10))
+    print(Numbers.subtract(5,10))
+
+    
+
+

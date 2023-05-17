@@ -1,6 +1,5 @@
 class Product:
     def __init__(self, name, price=0):
-        #add precondition check
         if not isinstance(name, str):
             raise TypeError('name must be str')
         if not isinstance(price, (float,int)):

@@ -30,6 +30,7 @@ if __name__ == '__main__':
 
 
     l = []
+    print("insert values for coeffs: [ctrl-c to solve]\n")
     while True:
         try:
             coeff = float(input())

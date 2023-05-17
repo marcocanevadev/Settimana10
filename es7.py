@@ -1,6 +1,7 @@
 class Pizza:
 
-    pizzarecipes = {'margherita':['pomodoro','mozzarella','basilico'],'diavola':['pomodoro','mozzarella','salamepicc']}
+    pizzarecipes = {'margherita':['mozzarella','pomodoro','basilico'],'diavola':['mozzarella','pomodoro','salamepicc']}
+    
     def __init__(self, ingredients):
         self._ingredients = ingredients
         
@@ -13,14 +14,23 @@ class Pizza:
     @classmethod
     def fromRecipe(cls, recipe):
         try:
-            return Pizza(cls.pizzarecipes[[k for k, v in cls.pizzarecipes.items() if v == recipe]])
+            return Pizza(recipe)
         except:
             raise ValueError
 
     def __str__(self):
-        return f'Delicious Bessa {self._ingredients!s}'
+        return f'Delicious {[k for k, v in self.pizzarecipes.items() if set(v) == set(self._ingredients)]} Bessa made with: {self._ingredients!s}'
     
     
 
 if __name__ == '__main__':
-    negro = Pizza(['pomodoro', 'basilico', 'mozzarella'])
+    pizza = Pizza(['pomodoro', 'mozzarella', 'basilico'])
+    print(pizza)
+    ingredienti = Pizza.getIngredients('margherita') 
+    ingre2 = pizza.getIngredients('diavola')
+    print(ingredienti)
+    print(ingre2)
+    p2 = Pizza.fromRecipe(ingredienti)
+    p3 = pizza.fromRecipe(ingre2)
+    print(p2)
+    print(p3)
