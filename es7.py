@@ -7,13 +7,13 @@ class Pizza:
     @classmethod
     def getIngredients(cls, recipe):
         try :
-            return cls.pizzarecipes[recipe]
+            return cls.pizzarecipes.get(recipe)
         except Exception:
             raise ValueError
     @classmethod
     def fromRecipe(cls, recipe):
         try:
-            return Pizza(cls.pizzarecipes[recipe])
+            return Pizza(cls.pizzarecipes[[k for k, v in cls.pizzarecipes.items() if v == recipe]])
         except:
             raise ValueError
 
